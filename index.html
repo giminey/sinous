@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta name="keywords" content="html5 canvas 粒子 逃脱" />
+    <meta name="description" content="html5 粒子逃脱游戏" />
+    <title>Hold on</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link type="text/css" href="css/reset.css" rel="stylesheet" media="screen" />
+    <link type="text/css" href="css/circle.css" rel="stylesheet" media="screen" />
+    <link type="text/css" href="./app.css" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+</head>
+
+<body>
+
+    <div id="start-page" class="start-page" style="display:none;">
+        <div id="introduction" class="introduction">
+            <ul id="legend" class="legend">
+                <li><i class="S">盾</i>防護盾</li>
+                <li><i class="G">力</i>重力場</li>
+                <li><i class="T">慢</i>時間軸</li>
+                <li><i class="M">小</i>變化術</li>
+                <li><i class="O">命</i>生命值</li>
+                <li><i class="P"></i>玩家</li>
+                <li><i class="E"></i>敵人</li>
+                <li><i class="K"></i>鑰匙</li>
+            </ul>
+            <h1 id="game-title">Escape</h1>
+            <div id="game-btn" class="startBtn">
+                <span id="start-button">Play</span>
+                <span id="help-button">Help</span>
+            </div>
+        </div>
+
+        <div id="game">
+            <div id="game-panel" class="game-panel" style="display:none">
+                <p>Level：<span id="level" class="level">1</span>Time：<span id="time" class="time">0</span> s</p>
+            </div>
+            <canvas id="world"></canvas>
+        </div>
+        <div id="game-over" class="game-over" style="display:none">
+            <div class="score">
+                <p class="over-bg"></p>
+                <p id="score-date" class="count"></p>
+                <p><span id="restart" class="restartBtn"></span></p>
+            </div>
+        </div>
+        <div id="answerDialog" class="answerDialog" style="display:none">
+            <ul id="answerLegend" class="answerLegend">
+                <li id = "Prince" style="display: none;"><i class="K">P</i>王子</li>
+                <li id = "Perfume" style="display: none;"><i class="K">P</i>香水</li>
+            </ul>
+        </div>
+    </div>
+    <div id="loading-page" class="loading-page">
+        <canvas id="loading"></canvas>
+    </div>
+
+    <script src="./bundle.js"></script>
+
+
+</body>
+
+</html>
