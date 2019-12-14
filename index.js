@@ -32,6 +32,7 @@ const timeEle = document.getElementById("time");
 const levelEle = document.getElementById("level");
 const finish = document.getElementById("finish");
 
+const startPage = document.getElementById("start-page");
 const raf = window.requestAnimationFrame
     || window.webkitRequestAnimationFrame
     || window.mozRequestAnimationFrame
@@ -40,7 +41,7 @@ const raf = window.requestAnimationFrame
     || function (callback) {
         window.setTimeout(callback, 1000 / 60);
     };
-
+var myIndex = 0;
 
 //地图初始化
 const canvas = document.getElementById('world');
@@ -62,7 +63,17 @@ function createEnemy(numEnemy) {
         enemys.push(new Enemy({ x, y }));
     }
 }
+$(document).ready(function () {
+    $(document).on('keypress', function (e) {
+        if (e.which == 13) {
+            console.log('You pressed enter!');
+            startPage.style.display = 'none';
+            $('.slideShow').css("display", "block");
+            carousel();
 
+        }
+    });
+});
 //添加技能点
 function createSkill() {
     const x = Math.random() * map.width + map.width;
@@ -71,6 +82,21 @@ function createSkill() {
     const type = ['shield', 'gravity', 'time', 'minimize', 'life', 'key'][Math.floor(Math.random() * 6)];
 
     skillPoint = new Skill({ x, y, type });
+}
+function carousel() {
+    
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) { myIndex = 1 }
+    x[myIndex - 1].style.display = "block";
+    setTimeout(carousel, 1500); // Change image every 5 seconds
+    
+
+
 }
 
 //碰撞检测
@@ -96,7 +122,7 @@ function initTimer() {
                 holdingTime = +timeEle.innerText + 1;
                 timeEle.innerText = holdingTime;
                 //每隔10秒加速一次
-                if (holdingTime % 10 === 0) {
+                if (holdingTime % 2000 === 0) {
                     holdingLevel++;
                     levelEle.innerText = holdingLevel;
                     for (let i = 0; i < enemys.length; i++) {
@@ -176,6 +202,12 @@ function animate() {
 
         if (player.keyIdList.length == 0) {
             // Finish
+
+            startPage.style.display = 'none';
+            $('.slideShow').css("display", "block");
+            carousel();
+
+
         }
 
         //一个粒子只进行一次撞击判断
