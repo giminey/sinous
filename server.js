@@ -5,14 +5,18 @@ var config = require('./webpack.config.js')
 var express = require('express')
 
 var app = express()
-var port = 3000
+var port = process.env.PORT || 5000;
 
 var compiler = webpack(config)
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
 // app.use(webpackHotMiddleware(compiler))
 app.use(express.static(__dirname));
 
-app.get("/", function(req, res) {
+app.get("/intro", function(req, res) {
+  res.sendFile(__dirname + '/IntroPage.html')
+})
+
+app.get("/game", function(req, res) {
   res.sendFile(__dirname + '/index.html')
 })
 

@@ -30,6 +30,7 @@ const gamePanel = document.getElementById("game-panel");
 const gameOver = document.getElementById("game-over");
 const timeEle = document.getElementById("time");
 const levelEle = document.getElementById("level");
+const finish = document.getElementById("finish");
 
 const raf = window.requestAnimationFrame
     || window.webkitRequestAnimationFrame
@@ -166,14 +167,15 @@ function animate() {
         }
 
         //碰到墙壁就狗带
+        /*
         if (player.x < 0 || player.x > map.width || player.y < 0 || player.y > map.height) {
             if (!player.dead) finalScore();
             player.destroy();
         }
+        */
 
-        if (player.keyIdList.length==0) {
-            finalScore();
-            player.destroy();
+        if (player.keyIdList.length == 0) {
+            // Finish
         }
 
         //一个粒子只进行一次撞击判断
@@ -242,6 +244,8 @@ function resetGame() {
 
     initRoles();
     initTimer();
+    paused = false;
+    player.resetKeyIdList();
 }
 
 //场景交互
@@ -253,47 +257,16 @@ function start() {
     startBtn.addEventListener('click', () => {
         resetGame();
         animate(); //animate只能调用一次
+        this.play();
     });
     startBtn.addEventListener('touchstart', () => {
         resetGame();
         animate(); //animate只能调用一次
     });
     helpBtn.addEventListener('click', () => {
-        console.log(document.getElementById("legend").style);
         document.getElementById("legend").style.opacity =
             document.getElementById("legend").style.opacity == '1' ? '0' : '1';
     });
-    document.body.addEventListener("keydown", function (e) {
-        e = e || window.event;
-        var key = e.which || e.keyCode; // keyCode detection
-        var ctrl = e.ctrlKey ? e.ctrlKey : ((key === 17) ? true : false); // ctrl detection
-        document.getElementById("answerDialog").style.display = 'block';
-        if (key == 86 && ctrl) {
-            paused = false;
-            $(function () {
-                $("#answerDialog").dialog("close");
-            });
-            document.getElementById("answerDialog").style.display = 'none';
-        } else if (key == 67 && ctrl) {
-            paused = true;
-            $(function () {
-                $("#answerDialog").dialog({
-                    autoOpen: true,
-                    show: {
-                        effect: "blind",
-                        duration: 1000
-                    },
-                    hide: {
-                        effect: "explode",
-                        duration: 1000
-                    }
-                });
-            });
-
-            console.log("Ctrl + C Pressed !");
-        }
-
-    }, false);
     restartBtn.addEventListener('click', () => resetGame());
     restartBtn.addEventListener('touchstart', () => resetGame());
 }

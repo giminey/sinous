@@ -25,7 +25,10 @@
 </head>
 
 <body>
-
+    <iframe src="assets/music/silence.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
+    <audio id="player" autoplay loop>
+        <source src="assets/music/xmas.mp3" type="audio/mp3">
+    </audio>
     <div id="start-page" class="start-page" style="display:none;">
         <div id="introduction" class="introduction">
             <ul id="legend" class="legend">
@@ -34,11 +37,8 @@
                 <li><i class="T">慢</i>時間軸</li>
                 <li><i class="M">小</i>變化術</li>
                 <li><i class="O">命</i>生命值</li>
-                <li><i class="P"></i>玩家</li>
-                <li><i class="E"></i>敵人</li>
-                <li><i class="K"></i>鑰匙</li>
             </ul>
-            <h1 id="game-title">Escape</h1>
+            <h1 id="game-title">2019 Xmas Time Tunnel</h1>
             <div id="game-btn" class="startBtn">
                 <span id="start-button">Play</span>
                 <span id="help-button">Help</span>
@@ -58,19 +58,12 @@
                 <p><span id="restart" class="restartBtn"></span></p>
             </div>
         </div>
-        <div id="answerDialog" class="answerDialog" style="display:none">
-            <ul id="answerLegend" class="answerLegend">
-                <li id = "Prince" style="display: none;"><i class="K">P</i>王子</li>
-                <li id = "Perfume" style="display: none;"><i class="K">P</i>香水</li>
-            </ul>
-        </div>
     </div>
     <div id="loading-page" class="loading-page">
         <canvas id="loading"></canvas>
     </div>
 
     <script src="./bundle.js"></script>
-
 
 </body>
 

@@ -20,7 +20,7 @@ const TEXTS = {
     time: '慢',
     minimize: '小',
     life: '命',
-    key: 'Key'
+    key: 'key'
 };
 
 export default class Skill extends Enemy {
@@ -47,7 +47,7 @@ export default class Skill extends Enemy {
         this.id++;
         this.radius = 9;
         this.isEated = false;
-        this.type = ['shield', 'gravity', 'time', 'minimize', 'life', 'key'][Math.floor(Math.random() * 6)];
+        this.type = ['shield', 'gravity', 'time', 'minimize', 'life', 'key', 'key', 'key', 'key'][Math.floor(Math.random() * 9)];
     }
 
     //被使用
